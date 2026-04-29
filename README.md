@@ -2,7 +2,7 @@
 
 > A hands-on Colab notebook accompanying the workshop *"Agentic LLMs in Practice — Tools, Function Calling, and Workflow Design"*, ODSC AI East 2026, April 30, 2026.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/<your-username>/<your-repo>/blob/main/Agentic_LLMs_Workshop.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/thenamangoyal/llm-engineering-workshop/blob/main/Agentic_LLMs_Workshop.ipynb)
 
 ## What's in the notebook
 
