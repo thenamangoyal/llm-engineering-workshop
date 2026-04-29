@@ -1,0 +1,12 @@
+# Workshop notebook dependencies. Works on Colab T4, Apple-Silicon Mac (MPS), or CPU.
+# Install once with:  pip install -r requirements.txt
+
+transformers>=4.51
+accelerate>=0.30
+pydantic>=2.0
+tenacity>=9.0
+matplotlib
+
+# Local-only — Colab pre-installs these:
+jupyter
+torch>=2.4
