@@ -2,7 +2,14 @@
 
 > A hands-on Colab notebook accompanying the workshop *"Agentic LLMs in Practice — Tools, Function Calling, and Workflow Design"*, ODSC AI East 2026, April 30, 2026.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/thenamangoyal/llm-engineering-workshop/blob/main/Agentic_LLMs_Workshop.ipynb)
+**Pick the notebook that matches your machine:**
+
+| Notebook | Where to run | One-click |
+|---|---|---|
+| `Agentic_LLMs_Workshop.ipynb` | Free Colab T4 GPU (or any Linux + CUDA) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/thenamangoyal/llm-engineering-workshop/blob/main/Agentic_LLMs_Workshop.ipynb) |
+| `Agentic_LLMs_Workshop_Mac.ipynb` | Apple-Silicon Mac (M1/M2/M3/M4), via JupyterLab or VS Code | [Open in Colab](https://colab.research.google.com/github/thenamangoyal/llm-engineering-workshop/blob/main/Agentic_LLMs_Workshop_Mac.ipynb) (just for viewing — runs locally) |
+
+Both notebooks have **identical content**: same modules, same exercises, same playground. Only the model backend differs (HF transformers + Qwen3.5-4B fp16 on Colab vs `mlx-lm` + Qwen3.5-4B-MLX-4bit on Mac).
 
 ## What's in the notebook
 
@@ -19,27 +26,26 @@ Each module produces a real, inline visual you can copy into your own slides.
 
 The notebook is designed to run with **no setup beyond pip install**, on two environments:
 
-### 🚀 Path A — Free Google Colab (recommended)
+### 🚀 Path A — Free Google Colab (recommended for non-Mac users)
 
-1. Click the **Open in Colab** badge above.
+1. Click the Colab badge for `Agentic_LLMs_Workshop.ipynb` above.
 2. `Runtime → Change runtime type → T4 GPU`.
-3. `Runtime → Run all` (`⌘/Ctrl + F9`). Whole notebook completes in **~5 minutes**.
+3. `Runtime → Run all` (`⌘/Ctrl + F9`). The first cell installs `transformers` from HuggingFace `main` branch (~60 s) since Qwen 3.5 is a multimodal model that requires the latest class registration. Whole notebook completes in **~5 minutes** after that.
 
-The default model is **Qwen/Qwen3.5-4B** (~8 GB at fp16, fits Colab T4 easily). Native tool calling. No API keys.
+Model: **`Qwen/Qwen3.5-4B`** (~8 GB at fp16, fits Colab T4). Native tool calling via the chat template. No API keys.
 
-### 💻 Path B — Local MacBook (Apple Silicon recommended)
+### 💻 Path B — Apple-Silicon Mac with MLX (recommended for Mac users)
 
 ```bash
-# one-time install:
-pip install -r requirements.txt
-jupyter lab Agentic_LLMs_Workshop.ipynb
+git clone https://github.com/thenamangoyal/llm-engineering-workshop.git
+cd llm-engineering-workshop
+pip install "mlx-lm>=0.31" "pydantic>=2.0" "tenacity>=9.0" matplotlib jupyter
+jupyter lab Agentic_LLMs_Workshop_Mac.ipynb
 ```
 
-The notebook auto-detects MPS (Apple Silicon GPU) and runs in fp16. Whole notebook completes in **~10–15 minutes** on an M-series Mac. CPU fallback works too.
+Or open `Agentic_LLMs_Workshop_Mac.ipynb` in VS Code and Run All.
 
-### (Optional) Gemini Pro Preview comparison
-
-If you have a Google AI Studio API key, add it to Colab Secrets as `GEMINI_API_KEY`. The notebook will then use Gemini 3.x Pro Preview alongside Qwen for one comparison cell. Off by default — the notebook works fully without it.
+Model: **`mlx-community/Qwen3.5-4B-MLX-4bit`** (~2 GB on disk, 4-bit quantised). First load downloads weights into your HuggingFace cache (~30 s on a fast connection); subsequent loads are instant. Whole notebook completes in **~6–8 minutes** on an M-series Mac. No API keys.
 
 ## What you'll see
 

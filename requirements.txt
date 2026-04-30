@@ -1,12 +1,21 @@
-# Workshop notebook dependencies. Works on Colab T4, Apple-Silicon Mac (MPS), or CPU.
-# Install once with:  pip install -r requirements.txt
+# Workshop notebook dependencies — common to both notebook variants.
+# Each notebook also has a `0.1 Install dependencies` cell that handles its
+# specific extras (transformers from HF main for the Colab variant, mlx-lm
+# for the Mac variant), so you can usually just open the notebook and Run All.
+#
+# This file is provided for users who prefer pre-installing in a virtualenv.
 
-transformers>=4.51
-accelerate>=0.30
+# Common (both variants)
 pydantic>=2.0
 tenacity>=9.0
 matplotlib
-
-# Local-only — Colab pre-installs these:
 jupyter
+
+# Colab / Linux GPU variant — Qwen 3.5 multimodal needs transformers from main
+transformers @ git+https://github.com/huggingface/transformers.git
+accelerate>=0.30
 torch>=2.4
+
+# Mac / Apple-Silicon variant — install ONLY this if you're using the Mac notebook;
+# safe to leave installed on other platforms (just unused).
+mlx-lm>=0.31; sys_platform == "darwin"
